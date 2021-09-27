@@ -1,5 +1,9 @@
 <?php 
-    require '/includes/db.php';
+    namespace phpFunctions;
+   
+   require_once 'db.php';
+
+    
 
     function registerScore($score){
         global $conn;
@@ -9,6 +13,8 @@
             $date = date("Y-m-d");
             $sql = "INSERT INTO scores (username,score,score_date) VALUES ($username,$score,$date)";
             $conn->query($sql) or die ("insert score was failed");
+
+            echo "skorunuz kaydedildi";
         }       
 
         
@@ -23,6 +29,8 @@
             while($row = $results->fetch_assoc()){
                 if($row["password"] == $password){
                     redirect("index.php");
+                }else{
+                    echo "already exist username || authentication failed!";
                 }
             }
         }else{
@@ -54,6 +62,13 @@
 
      function redirect($location){
         return header("Location:" . $location);
+    }
+
+    function accessControl(){
+        if(!isset($_SESSION["username"])){
+            redirect("login.php");
+            exit;
+        }
     }
 
 ?>

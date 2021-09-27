@@ -1,10 +1,10 @@
 <?php
     ob_start();
 
-    $db['db_host'] = "149.202.246.65";
-    $db['db_user'] = "gazident_carRacer";
-    $db['db_pass'] = "BqgQiGdGyTXO";
-    $db['db_name'] = "gazident_bt7";
+    $db['db_host'] = "localhost";
+    $db['db_user'] = "newuser";
+    $db['db_pass'] = "02ba2Desengo!artist02";
+    $db['db_name'] = "carRacer";
     
     foreach($db as $key => $value){
         define(strtoupper($key),$value);
